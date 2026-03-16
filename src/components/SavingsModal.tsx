@@ -69,7 +69,7 @@ const SavingsModal: React.FC<SavingsModalProps> = ({ isOpen, onClose, totalExpen
             <div className="flex justify-center py-8">
               <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary-600"></div>
             </div>
-          ) : !salary ? (
+          ) : salary === null ? (
             <div className="flex flex-col items-center justify-center py-2">
               <div className="bg-yellow-100 p-4 rounded-full mb-4">
                 <AlertTriangle className="w-10 h-10 text-yellow-600" />

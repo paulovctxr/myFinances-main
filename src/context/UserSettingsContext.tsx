@@ -34,6 +34,8 @@ export const UserSettingsProvider: React.FC<{ children: ReactNode }> = ({ childr
       .from('user_settings')
       .select('salary')
       .eq('user_id', user.id)
+      .order('created_at', { ascending: false })
+      .limit(1)
       .maybeSingle();
 
     if (error) {
@@ -61,20 +63,15 @@ export const UserSettingsProvider: React.FC<{ children: ReactNode }> = ({ childr
     // Ensure we don't re-fetch immediately after update
     lastFetchedUserId.current = user.id;
 
-    const { data: existingData } = await supabase
+    const { data: updatedRows, error: updateError } = await supabase
       .from('user_settings')
-      .select('id')
+      .update({ salary: newSalary, updated_at: new Date().toISOString() })
       .eq('user_id', user.id)
-      .maybeSingle();
+      .select('id');
 
-    let error;
-    if (existingData) {
-      const { error: updateError } = await supabase
-        .from('user_settings')
-        .update({ salary: newSalary, updated_at: new Date().toISOString() })
-        .eq('user_id', user.id);
-      error = updateError;
-    } else {
+    let error = updateError;
+
+    if (!error && (!updatedRows || updatedRows.length === 0)) {
       const { error: insertError } = await supabase
         .from('user_settings')
         .insert({
