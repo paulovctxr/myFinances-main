@@ -23,7 +23,7 @@ import('./App.tsx')
     const message = error instanceof Error ? error.message : 'Erro desconhecido ao iniciar a aplicação'
 
     root.render(
-      <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '24px', backgroundColor: '#f9fafb', color: '#111827', fontFamily: 'Inter, system-ui, Avenir, Helvetica, Arial, sans-serif' }}>
+      <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '24px', backgroundColor: '#000000', color: '#f9fafb', fontFamily: 'Inter, system-ui, Avenir, Helvetica, Arial, sans-serif' }}>
         <div style={{ maxWidth: '680px', width: '100%', backgroundColor: '#fff', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '20px' }}>
           <h1 style={{ margin: 0, fontSize: '20px' }}>Falha ao iniciar o app</h1>
           <p style={{ marginTop: '12px', marginBottom: 0 }}>

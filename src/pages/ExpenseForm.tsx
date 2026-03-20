@@ -129,7 +129,7 @@ const ExpenseForm: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50/50 p-4 sm:p-8 flex items-center justify-center">
+    <div className="min-h-screen bg-black p-4 sm:p-8 flex items-center justify-center">
       <div className="w-full max-w-lg">
         <div className="mb-6">
           <Link to="/" className="inline-flex items-center text-gray-500 hover:text-gray-900 transition-colors">
